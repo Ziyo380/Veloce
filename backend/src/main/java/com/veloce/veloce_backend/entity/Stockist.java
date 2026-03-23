@@ -2,7 +2,6 @@ package com.veloce.veloce_backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 @Entity
 @Table(name = "stockists")
 @Getter
@@ -17,8 +16,7 @@ public class Stockist {
     private Long id;
 
     private String region;
-
-    private String name;
-
-    private String address;
+    private String companyName;
+    private String email;
+    private String phone;
 }

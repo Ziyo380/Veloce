@@ -17,12 +17,5 @@ public class Founder {
     private Long id;
 
     private String name;
-
-    private String title;
-
-    private String phone;
-
-    private String email;
-
-    private String social;
+    private String imageUrl;
 }

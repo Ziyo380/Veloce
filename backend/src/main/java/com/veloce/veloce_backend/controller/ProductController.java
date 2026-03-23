@@ -1,31 +1,31 @@
 package com.veloce.veloce_backend.controller;
 
+import com.veloce.veloce_backend.dto.ProductResponse;
 import com.veloce.veloce_backend.entity.Product;
 import com.veloce.veloce_backend.service.ProductService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
+@RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-    @GetMapping
-    public List<Product> getProducts(){
-        return productService.getAllProducts();
-    }
-    @GetMapping("/{id}")
-    public Product getProduct(@PathVariable Long id){
-        return productService.getProduct(id);
 
+    @GetMapping
+    public List<ProductResponse> getAll(@RequestParam(required = false) String category){
+    if (category !=null){
+    return productService.getByCategory(category);
     }
-    @PostMapping
-    public Product createProduct(@Valid @RequestBody Product product){
-        return productService.createProduct(product);
+    return productService.getAllProducts();
+    }
+
+    @GetMapping("/{id}")
+    public ProductResponse getById(@PathVariable Long id){
+        return productService.getById(id);
     }
 }
