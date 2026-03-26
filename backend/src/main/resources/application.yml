@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d72fcendiees739nskhg-a:5432/veloce_h2y0
-    username: veloce_user
-    password: LeKAowr2rVaLhqN3MmgSCthRF1V2ICJ7
+    url: jdbc:postgresql://host:5432/veloce_h2y0
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -12,6 +12,3 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
-server:
-  port: ${PORT:8080}
