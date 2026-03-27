@@ -1,0 +1,150 @@
+.hero {
+  padding-top: clamp(0.5rem, 1.2vw, 1rem);
+  padding-bottom: clamp(1.2rem, 2.5vw, 2.2rem);
+}
+
+.hero__visual {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.hero__background {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.hero__visualContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: clamp(0.5rem, 1.3vw, 0.9rem);
+}
+
+.hero__panel {
+  background: #c89d64;
+  padding: clamp(1rem, 2.2vw, 1.6rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-inline-size: clamp(11rem, 23vw, 18rem);
+}
+
+.hero__panelTitle {
+  font-family: var(--second-family);
+  font-size: clamp(1rem, 2vw, 2rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #0f0f0f;
+  max-width: 11ch;
+}
+
+.hero__panelButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 999px;
+  background: #0f0f0f;
+  color: #c89d64;
+  text-decoration: none;
+  font-family: var(--second-family);
+  text-transform: uppercase;
+  font-size: clamp(0.58rem, 0.9vw, 0.85rem);
+  letter-spacing: 0.03em;
+  padding: clamp(0.28rem, 0.8vw, 0.5rem) clamp(0.8rem, 1.6vw, 1.2rem);
+}
+
+.hero__description {
+  margin-top: clamp(1rem, 2vw, 1.75rem);
+  font-family: var(--second-family);
+  font-size: clamp(1.55rem, 3.2vw, 3.4rem);
+  line-height: 1.02;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: #0f0f0f;
+  max-width: 26ch;
+}
+
+.hero__aboutButton {
+  margin-top: clamp(0.9rem, 1.8vw, 1.4rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0f0f0f;
+  border-radius: 999px;
+  color: #0f0f0f;
+  text-decoration: none;
+  font-family: var(--second-family);
+  text-transform: uppercase;
+  font-size: clamp(0.72rem, 1vw, 0.95rem);
+  letter-spacing: 0.03em;
+  padding: clamp(0.28rem, 0.8vw, 0.5rem) clamp(0.9rem, 1.8vw, 1.3rem);
+}
+
+@media (max-width: 1024px) {
+  .hero__description {
+    max-width: 20ch;
+    font-size: clamp(1.3rem, 4vw, 2.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__visual {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  .hero__background {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero__visualContent {
+    padding-top: clamp(0.4rem, 1.6vw, 0.7rem);
+  }
+
+  .hero__panel {
+    max-inline-size: clamp(7.2rem, 34vw, 11rem);
+    padding: clamp(0.5rem, 1.5vw, 0.9rem);
+  }
+
+  .hero__panelTitle {
+    font-size: clamp(0.7rem, 2.1vw, 1rem);
+    max-width: 12ch;
+  }
+
+  .hero__panelButton {
+    font-size: clamp(0.44rem, 1.6vw, 0.62rem);
+    padding: clamp(0.2rem, 0.7vw, 0.36rem) clamp(0.6rem, 1.2vw, 0.85rem);
+  }
+
+  .hero__description {
+    margin-top: clamp(0.8rem, 2.4vw, 1.2rem);
+    font-size: clamp(1.55rem, 7vw, 2.35rem);
+    max-width: 16ch;
+  }
+}
+
+@media (max-width: 336px) {
+  .hero__panel {
+    max-inline-size: 6.9rem;
+    padding: 0.45rem;
+  }
+
+  .hero__panelTitle {
+    font-size: 0.65rem;
+  }
+
+  .hero__description {
+    font-size: 1.4rem;
+  }
+}
