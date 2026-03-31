@@ -1,11 +1,11 @@
 .nav {
     &__home {
         background: #fff;
-        padding: clamp(1.25em, 3vw, 3.75em) 0 clamp(1.25em, 2vw, 1.875em) 0;
+        // padding: clamp(1.25em, 3vw, 3.75em) 0 clamp(1.25em, 2vw, 1.875em) 0;
 
         &__content {
             display: flex;
-            justify-content: space-between;
+            // justify-content: space-between;
             align-items: center;
             gap: clamp(1.5rem, 3vw, 4.375rem);
         }
@@ -76,20 +76,39 @@
             }
         }
 
-        &__deco {
-            width: 100%;
-            overflow: hidden;
-            height: clamp(15px, 2.5vw, 33px);
-            display: flex;
-            margin-top: 30px;
+        // &__deco {
+        //     // width: 100%;
+        //     overflow: hidden;
+        //     height: clamp(15px, 2.5vw, 33px);
+        //     display: flex;
+        //     margin-top: 30px;
+            
+        //     &_img {
+        //         background-repeat: repeat-x; // Повторять ТОЛЬКО по оси X
+        //         background-size: contain; // Или задай точный размер, например: 20px 10px;
+        //         background-position: top center;
+        //         // width: 100%;
+        //         // // height: 100%;
+        //         // object-fit: cover;
+        //         // display: block;
+        //     }
+        // }
+&__deco {
+    width: 100%; // Обязательно, чтобы блок растянулся
+    height: clamp(15px, 2.5vw, 33px);
+    margin-top: 30px;
+    overflow: hidden;
 
-            &_img {
-                width: 100%;
-                // height: 100%;
-                object-fit: cover;
-                display: block;
-            }
-        }
+    // Вместо тега img используем фон:
+    background-image: url('../../../assets/icons/deco_border.svg'); 
+    background-repeat: repeat-x; // Клонируем по горизонтали
+    background-position: left center;
+    
+    // Подбери размер одного квадратика, чтобы он не растягивался
+    // Например, если высота 20px, то и тут поставь высоту 20px
+    background-size: auto 100%; 
+}
+
     }
 
     &__others {

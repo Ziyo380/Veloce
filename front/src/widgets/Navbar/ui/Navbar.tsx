@@ -39,7 +39,7 @@ export const Navbar = () => {
                     </div>
                 </div>
                 <div className={styles.nav__home__deco}>
-                    <img src={decoBorder} alt="" className={styles.nav__home__deco_img} />
+                    {/* <img src={decoBorder} alt="" className={styles.nav__home__deco_img} /> */}
                 </div>
             </nav>
         );
