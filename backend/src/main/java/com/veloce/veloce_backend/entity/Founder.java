@@ -18,4 +18,8 @@ public class Founder {
 
     private String name;
     private String imageUrl;
+    private String title;
+    private String phone;
+    private String email;
+    private String social;
 }

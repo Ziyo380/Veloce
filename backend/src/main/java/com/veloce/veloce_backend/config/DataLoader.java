@@ -2,103 +2,90 @@ package com.veloce.veloce_backend.config;
 
 import com.veloce.veloce_backend.entity.*;
 import com.veloce.veloce_backend.repository.*;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class DataLoader {
+public class DataLoader implements CommandLineRunner {
 
     private final ProductRepository productRepository;
     private final FounderRepository founderRepository;
-    private final CompanyInfoRepository companyInfoRepository;
     private final AwardRepository awardRepository;
     private final StockistRepository stockistRepository;
+    private final CompanyInfoRepository companyInfoRepository;
 
-    @PostConstruct
-    public void load() {
+    @Override
+    public void run(String... args) {
 
-        System.out.println("🔥 DataLoader started...");
-
-        // prevent duplicate data
+        // ❗ защита от дублирования
         if (productRepository.count() > 0) {
-            System.out.println("⚠️ Data already exists, skipping...");
+            System.out.println("⚠️ Data already exists, skipping initialization...");
             return;
         }
 
-        System.out.println("🚀 Inserting test data...");
+        System.out.println("🔥 Loading initial data...");
 
+        // =========================
         // PRODUCTS
+        // =========================
         productRepository.save(Product.builder()
                 .name("Lavande")
-                .description("Floral aperitif with lavender and chamomile")
+                .description("A delicate floral aperitif with notes of lavender and chamomile.")
                 .category("floral")
                 .imageUrl("/cart_1.jpg")
                 .build());
 
         productRepository.save(Product.builder()
                 .name("Primavera")
-                .description("Bright citrus aperitif")
+                .description("A refreshing and vibrant aperitif with bright citrus notes.")
                 .category("citrus")
                 .imageUrl("/cart_2.jpg")
                 .build());
 
         productRepository.save(Product.builder()
                 .name("Spezia")
-                .description("Spiced aperitif with cinnamon")
+                .description("A bold, spiced aperitif featuring cardamom, ginger, and cinnamon.")
                 .category("spiced")
                 .imageUrl("/cart_3.jpg")
                 .build());
 
+        // =========================
         // FOUNDER
+        // =========================
         founderRepository.save(Founder.builder()
                 .name("Mike Vera")
+                .title("Founder")
+                .phone("415-555-4567")
+                .email("hello@figma.com")
+                .social("@figma")
                 .imageUrl("/bg_4.jpg")
                 .build());
 
+        // =========================
         // COMPANY INFO
+        // =========================
         companyInfoRepository.save(CompanyInfo.builder()
-                .description("Veloce represents a new era of spirit-free aperitifs.")
-                .phone("(646) 555-4567")
+                .description("Véloce represents a new era of the aperitif, where flavor and functionality converge in a beautifully crafted, alcohol-free beverage.")
+                .phone("415-555-4567")
                 .email("hello@figma.com")
                 .build());
 
-        awardRepository.save(Award.builder()
-                .year(2025)
-                .title("Best Botanical Blend")
-                .build());
+        // =========================
+        // AWARDS
+        // =========================
+        awardRepository.save(Award.builder().year(2025).title("Best Botanical Blend").build());
+        awardRepository.save(Award.builder().year(2025).title("Gold Medal – Bittersweet Category").build());
+        awardRepository.save(Award.builder().year(2024).title("Best Sustainable Packaging").build());
+        awardRepository.save(Award.builder().year(2024).title("Eco-Friendly Brand of the Year").build());
+        awardRepository.save(Award.builder().year(2023).title("Editor's Choice – Best Aperitif").build());
+        awardRepository.save(Award.builder().year(2023).title("Most Elegant Bottle Design").build());
+        awardRepository.save(Award.builder().year(2022).title("Best Low & No Alcohol Beverage").build());
 
-        awardRepository.save(Award.builder()
-                .year(2025)
-                .title("Gold Medal – Bittersweet Category")
-                .build());
-
-        awardRepository.save(Award.builder()
-                .year(2024)
-                .title("Best Sustainable Packaging")
-                .build());
-
-        awardRepository.save(Award.builder()
-                .year(2024)
-                .title("Eco-Friendly Brand of the Year")
-                .build());
-
-        awardRepository.save(Award.builder()
-                .year(2023)
-                .title("Editor's Choice – Best Aperitif")
-                .build());
-
-        awardRepository.save(Award.builder()
-                .year(2023)
-                .title("Most Elegant Bottle Design")
-                .build());
-
-        awardRepository.save(Award.builder()
-                .year(2022)
-                .title("Best Low & No Alcohol Beverage")
-                .build());
+        // =========================
         // STOCKISTS
+        // =========================
         stockistRepository.save(Stockist.builder()
                 .region("USA")
                 .companyName("The Artisan Grocer")
@@ -108,10 +95,11 @@ public class DataLoader {
 
         stockistRepository.save(Stockist.builder()
                 .region("Europe")
-                .companyName("La Maison du Goût")
+                .companyName("Le Marché Bio")
                 .email("hello@figma.com")
                 .phone("+33 1 23 45 67 89")
                 .build());
+
         stockistRepository.save(Stockist.builder()
                 .region("Asia")
                 .companyName("Kurasu & Co.")

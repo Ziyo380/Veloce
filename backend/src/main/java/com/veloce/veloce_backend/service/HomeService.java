@@ -1,13 +1,11 @@
 package com.veloce.veloce_backend.service;
 
-import com.veloce.veloce_backend.dto.HomeResponse;
-import com.veloce.veloce_backend.entity.Product;
+import com.veloce.veloce_backend.dto.*;
 import com.veloce.veloce_backend.mapper.ProductMapper;
 import com.veloce.veloce_backend.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class HomeService {
@@ -17,25 +15,21 @@ public class HomeService {
 
     public HomeResponse getHome() {
 
-        List<Product> products = productRepository.findAll();
+        var products = productRepository.findAll()
+                .stream()
+                .map(productMapper::toDto)
+                .toList();
 
-        Product featured = products.stream()
-                .filter(p -> p.getName().equalsIgnoreCase("Primavera"))
-                .findFirst()
-                .orElse(products.get(0));
+        return HomeResponse.builder()
+                .heroText("The only spirit-free aperitif that tastes as good as it makes you feel.")
 
-        HomeResponse response = new HomeResponse();
+                .description(
+                        "Véloce is the zero-proof aperitif for modern living, crafted with super herbs and nutraceuticals to elevate your well-being, without compromising the sophisticated ritual of the aperitif."
+                )
 
-        response.setHeroText("The only spirit-free aperitif for modern living.");
+                .featuredProduct(products.isEmpty() ? null : products.get(0))
 
-        response.setFeaturedProduct(productMapper.toDto(featured));
-
-        response.setProducts(
-                products.stream()
-                        .map(productMapper::toDto)
-                        .toList()
-        );
-
-        return response;
+                .products(products)
+                .build();
     }
 }
