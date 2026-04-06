@@ -27,11 +27,11 @@ export const HomePage = () => {
     return null
   }
 
-  const { featuredProduct, products } = data
+  const { heroText, description, featuredProduct, products } = data
 
   return (
     <main>
-      <HomeHero />
+      <HomeHero heroText={heroText} description={description} />
       <FeaturedProduct product={featuredProduct} />
       <ProductList products={products} />
       <CollectionSlider featured={featuredProduct} collections={products} />

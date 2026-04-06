@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Product } from '../../../shared/Home/homeApi'
+import { getAssetUrl } from '../../../shared/api/config'
 import { useTypewriter } from '../lib/useTypewriter'
 import styles from './CollectionSlider.module.scss'
 
@@ -51,7 +52,7 @@ export const CollectionSlider: React.FC<CollectionSliderProps> = ({
     id: 'find_us',
     name: 'FIND US',
     description: 'EXPERIENCE THE REFINED TASTE OF VÉLOCE. VISIT OUR PREMIUM STOCKISTS FOR YOUR NEXT ALCOHOL-FREE APERITIF.',
-    imageUrl: '/bg_3.jpg'
+    imageUrl: getAssetUrl('/bg_3.jpg')
   }
 
   // Общий тип для активного контента (продукт или FIND US)
